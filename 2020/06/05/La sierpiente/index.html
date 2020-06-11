@@ -456,7 +456,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/Lefan1107/blog-img/master/blog%20img/2020-06-05-171505_1920x1080_scrot.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/Lefan1107/blog-img/master/blog%20img/La%20serpiente.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -620,14 +620,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Recuento de palabras del artículo:&nbsp;&nbsp;
-                    486
+                    700
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Tiempo de lectura:&nbsp;&nbsp;
-                    3 Minutos
+                    4 Minutos
                 </div>
                 
 
@@ -643,19 +643,22 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>El codigo:</p>
-<pre><code>&quot;&quot;&quot;
+<pre><code>
+&quot;&quot;&quot;
 Nombre del juego: La serpiente
 Fecha de creación: 05/06/2020
-Fecha del ultima actualización: 05/06/2020
-Verción: 1.0.
+Fecha del ultima actualización: 07/06/2020
+Verción: 1.2
 Creador: Lefan
 &quot;&quot;&quot;
 import turtle
 import time
 import random
 
-posponer = 0.1
+posponer = 0.04
 
+score=0
+high_score=0
 #Ventana
 wn = turtle.Screen()
 wn.title(&quot;La serpiente&quot;)
@@ -667,7 +670,7 @@ wn.tracer(0)
 cabeza = turtle.Turtle()
 cabeza.speed(0)
 cabeza.shape(&quot;square&quot;)
-cabeza.color(&quot;white&quot;)
+cabeza.color(&quot;#00bb2d&quot;)
 cabeza.penup()
 cabeza.goto(0,0)
 cabeza.direction = &quot;stop&quot;
@@ -678,8 +681,28 @@ comida.speed(0)
 comida.shape(&quot;circle&quot;)
 comida.color(&quot;red&quot;)
 comida.penup()
-comida.goto(0,100)
+x = random.randint(-280,280)
+y = random.randint(-280,280)
+comida.goto(x,y)
 
+#Comida2
+comida2 = turtle.Turtle()
+comida2.speed(0)
+comida2.shape(&quot;circle&quot;)
+comida2.color(&quot;orange&quot;)
+comida2.penup()
+comida2.goto(0,100)
+x = random.randint(-280,280)
+y = random.randint(-280,280)
+comida2.goto(x,y)
+
+texto2 = turtle.Turtle()
+texto2.speed(0)
+texto2.color(&quot;white&quot;)
+texto2.penup()
+texto2.hideturtle()
+texto2.goto(0,260)
+texto2.write(&quot;Score: 0     High score: 0&quot;, align = &quot;center&quot;, font =(&quot;Courier&quot;, 24, &quot;normal&quot;))
 #Cuerpo
 cuerpo = []
 
@@ -696,6 +719,8 @@ def izquierda():
 def derecha():
     if cabeza.direction != &quot;left&quot;:
         cabeza.direction = &quot;right&quot;
+def salir():
+    exit()
 
 
 def mov():
@@ -722,23 +747,24 @@ wn.onkeypress(abajo, &quot;Down&quot;)
 wn.onkeypress(izquierda, &quot;Left&quot;)
 wn.onkeypress(derecha, &quot;Right&quot;)
 
+
 while True:
     wn.update()
 
     #Colisiones bordes
     if cabeza.xcor() &gt; 280 or cabeza.xcor() &lt; -290 or  cabeza.ycor() &lt; -280 or  cabeza.ycor() &gt; 290:
-        texto = turtle.Turtle()
-        texto.color(&quot;red&quot;)
-        texto.goto(0,0)
-        texto.penup
-        texto.write(&quot;Game Over&quot;, align = &quot;center&quot;, font =(&quot;Courier&quot;, 64, &quot;normal&quot;))
         time.sleep(1)
         cabeza.direction = &quot;stop&quot;
-        exit()
+        cabeza.goto(0,0)
 
         #Escoder
         for segmento in cuerpo:
             segmento.goto(2000,2000)
+
+        score=0
+        texto2.clear()
+        texto2.write(&quot;Score: {}     High score: {}&quot;.format(score, high_score), align = &quot;center&quot;, font =(&quot;Courier&quot;, 24, &quot;normal&quot;))
+
 
         #limbia
         cuerpo.clear()
@@ -750,11 +776,37 @@ while True:
         x = random.randint(-280,280)
         y = random.randint(-280,280)
         comida.goto(x,y)
-
         cuerpos = turtle.Turtle()
         cuerpos.speed(0)
         cuerpos.shape(&quot;square&quot;)
-        cuerpos.color(&quot;gray&quot;)
+        cuerpos.color(&quot;#008f39&quot;)
+        cuerpos.penup()
+        cuerpo.append(cuerpos)
+        score+= 1
+        if high_score&lt;score:
+            high_score=score
+        texto2.clear()
+        texto2.write(&quot;Score: {}     High score: {}&quot;.format(score, high_score), align = &quot;center&quot;, font =(&quot;Courier&quot;, 24, &quot;normal&quot;))
+
+    if cabeza.distance(comida2) &lt; 20:
+        x = random.randint(-280,280)
+        y = random.randint(-280,280)
+        score+= 3
+        if high_score&lt;score:
+            high_score=score
+        texto2.clear()
+        texto2.write(&quot;Score: {}     High score: {}&quot;.format(score, high_score), align = &quot;center&quot;, font =(&quot;Courier&quot;, 24, &quot;normal&quot;))
+        comida2.goto(x,y)
+        cuerpos = turtle.Turtle()
+        cuerpos.speed(0)
+        cuerpos.shape(&quot;square&quot;)
+        cuerpos.color(&quot;#008f39&quot;)
+        cuerpos.penup()
+        cuerpo.append(cuerpos)
+        cuerpos = turtle.Turtle()
+        cuerpos.speed(0)
+        cuerpos.shape(&quot;square&quot;)
+        cuerpos.color(&quot;#008f39&quot;)
         cuerpos.penup()
         cuerpo.append(cuerpos)
 
@@ -776,18 +828,17 @@ while True:
     #Cuerpo 2
     for segmento in cuerpo:
         if segmento.distance(cabeza) &lt; 20:
-            texto = turtle.Turtle()
-            texto.color(&quot;red&quot;)
-            texto.goto(0,0)
-            texto.penup
-            texto.write(&quot;Game Over&quot;, align = &quot;center&quot;, font =(&quot;Courier&quot;, 64, &quot;normal&quot;))
             time.sleep(1)
+            cabeza.goto(0,0)
             cabeza.direction = &quot;stop&quot;
-            exit()
             #esconder
             for segmento in cuerpo:
                 segmento.goto(1000,1000)
             cuerpo.clear()
+            score=0
+            texto2.clear()
+            texto2.write(&quot;Score: {}     High score: {}&quot;.format(score, high_score), align = &quot;center&quot;, font =(&quot;Courier&quot;, 24, &quot;normal&quot;))
+
 
     time.sleep(posponer)</code></pre>
             </div>
@@ -1116,7 +1167,7 @@ while True:
                 <a href="/2020/06/05/La%20sierpiente/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/Lefan1107/blog-img/master/blog%20img/2020-06-05-171505_1920x1080_scrot.png" class="responsive-img" alt="La serpiente">
+                        <img src="https://raw.githubusercontent.com/Lefan1107/blog-img/master/blog%20img/La%20serpiente.png" class="responsive-img" alt="La serpiente">
                         
                         <span class="card-title">La serpiente</span>
                     </div>
@@ -1382,7 +1433,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <a href=""></a>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Recuento total de palabras del sitio:&nbsp;<span
-                class="white-color">7.5k</span>&nbsp;
+                class="white-color">7.7k</span>&nbsp;
             
             
             
