@@ -512,29 +512,11 @@
                 </a>
                 
                 
-                <a href="/categories/Estudio/" title="Estudio: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">Estudio
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Pelicula/" title="Película: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Película
+                            style="background-color: #D5F5E3;">Película
                         <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Libros/" title="Libros: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">Libros
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -542,7 +524,25 @@
                 <a href="/categories/Juego/" title="Juego: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">Juego
+                            style="background-color: #E8F8F5;">Juego
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Estudio/" title="Estudio: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">Estudio
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Libros/" title="Libros: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">Libros
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -650,7 +650,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"Cubo de Rubik","max":14},{"name":"Juegos","max":14},{"name":"Estudio","max":14},{"name":"Película","max":14},{"name":"Libros","max":14},{"name":"Juego","max":14}],
+            indicator: [{"name":"Cubo de Rubik","max":14},{"name":"Juegos","max":14},{"name":"Película","max":14},{"name":"Juego","max":14},{"name":"Estudio","max":14},{"name":"Libros","max":14}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -661,7 +661,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [4,2,1,13,1,1],
+                    value : [4,2,13,1,1,1],
                     name : 'Número de categorías de artículos.'
                 }
             ]
@@ -722,7 +722,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06"]
+            data: ["2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08"]
         },
         yAxis: {
             type: 'value',
@@ -732,7 +732,7 @@
                 name: 'Artículos',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,9,11,2],
+                data: [0,0,0,0,0,0,0,0,9,10,2,0,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -774,7 +774,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Cubo de Rubik","value":4},{"name":"Juegos","value":2},{"name":"Estudio","value":1},{"name":"Película","value":13},{"name":"Libros","value":1},{"name":"Juego","value":1}],
+                data: [{"name":"Cubo de Rubik","value":4},{"name":"Juegos","value":2},{"name":"Película","value":13},{"name":"Juego","value":1},{"name":"Estudio","value":1},{"name":"Libros","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -854,7 +854,7 @@
             <a href=""></a>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Recuento total de palabras del sitio:&nbsp;<span
-                class="white-color">7.7k</span>&nbsp;
+                class="white-color">6.6k</span>&nbsp;
             
             
             
